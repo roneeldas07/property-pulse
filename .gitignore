@@ -38,3 +38,5 @@ next-env.d.ts
 
 #theme files
 /_theme_files
+
+.vscode/

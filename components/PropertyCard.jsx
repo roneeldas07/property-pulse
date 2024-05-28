@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaBed, FaBath, FaRulerCombined, FaLocationArrow, FaMoneyBill } from 'react-icons/fa'
+import { FaBed, FaBath, FaRulerCombined, FaMoneyBill, FaMapMarkerAlt } from 'react-icons/fa'
 
 const PropertyCard = ({property}) => {
     const getRateDisplay = () => {
@@ -61,7 +61,7 @@ const PropertyCard = ({property}) => {
 
             <div className="flex flex-col lg:flex-row justify-between mb-4">
             <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-                <FaLocationArrow />
+                <FaMapMarkerAlt className='mt-1'/>
                 <span className="text-orange-700"> {`${property.location.city},${property.location.state}`} </span>
             </div>
             <Link
