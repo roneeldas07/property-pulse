@@ -2,7 +2,7 @@ import connectDB from "@/config/connectionDB"
 import Property from "@/models/PropertyModel"
 
 //GET api/properties
-export async function GET (request) {
+export async function GET () {
     try {
         await connectDB()
         const properties = await Property.find({})
