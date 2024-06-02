@@ -3,7 +3,7 @@ const api_domain = process.env.NEXT_PUBLIC_API_DOMAIN || null
 export const fetchProperties = async () => {
     try {
         if(!api_domain) return []
-        const res = await fetch(`${api_domain}/properties`,{ method: 'GET' })
+        const res = await fetch(`${api_domain}/properties`,{ method: 'GET' , cache: 'no-store'})
         if(!res.ok){
             throw new Error("error in fetching records")
         }

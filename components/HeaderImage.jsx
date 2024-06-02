@@ -13,6 +13,7 @@ const HeaderImage = ({image}) => {
                         sizes='100vw'
                         height={0}
                         width={0}
+                        priority
                     />
                 </div>
             </div>

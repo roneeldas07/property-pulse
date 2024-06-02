@@ -6,6 +6,7 @@ import HeaderImage from '@/components/HeaderImage'
 import { FaArrowLeft, FaBath, FaBed, FaBookmark, FaCheck, FaMapMarkerAlt, FaPaperPlane, FaRulerCombined, FaShare, FaTimes } from 'react-icons/fa'
 import Link from 'next/link'
 import Spinner from '@/components/Spinner'
+import PropertyImages from '@/components/PropertyImages'
 
 const PropertyPage = () => {
     const [property, setProperty] = useState({})
@@ -29,7 +30,7 @@ const PropertyPage = () => {
         <>
         { loading ? <Spinner loading={loading}/>: 
             <div>
-                <HeaderImage image={`/images/properties/${property.images[0]}`}/>
+                <HeaderImage image={`${property.images[0]}`}/>
                 {/*<!-- Go Back -->*/}
                 <section>
                     <div className="container m-auto py-6 px-6">
@@ -129,7 +130,7 @@ const PropertyPage = () => {
                             <ul
                                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none"
                             >
-                                {property.amenities.map(amenity => <li className='flex'>
+                                {property.amenities.map(amenity => <li className='flex' key={amenity}>
                                     <FaCheck className="text-green-600 mr-2 mt-2"></FaCheck> {amenity}
                                 </li>)}
                             </ul>
@@ -225,6 +226,7 @@ const PropertyPage = () => {
                             </div>
                         </aside>
                         </div>
+                        <PropertyImages images={property.images}/>
                     </div>
                 </section>
             </div>
