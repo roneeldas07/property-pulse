@@ -3,40 +3,29 @@ import React, { useState } from 'react'
 
 const PropertyAddForm = () => {
     const [property, setProperty] = useState({
-        "name": "Test Retreat",
-        "type": "Apartment",
-        "description": "This is a beautiful apartment located near the commons. It is a 2 bedroom apartment with a full kitchen and bathroom. It is available for weekly or monthly rentals.",
+        "name": "",
+        "type": "",
+        "description": "",
         "location": {
-          "street": "120 Tremont Street",
-          "city": "Boston",
-          "state": "MA",
-          "zipcode": "02108"
+          "street": "",
+          "city": "",
+          "state": "",
+          "zipcode": ""
         },
-        "beds": 2,
-        "baths": 1,
-        "square_feet": 1500,
-        "amenities": [
-          "Wifi",
-          "Full Kitchen",
-          "Washer & Dryer",
-          "Dishwasher",
-          "Gym/Fitness Center",
-          "Air Conditioning",
-          "Balcony/Patio",
-          "Smart TV",
-          "Coffee Maker"
-        ],
+        "beds": 0,
+        "baths": 0,
+        "square_feet": 0,
+        "amenities": [],
         "rates": {
-          "weekly": 1100,
-          "monthly": 4200,
+          "weekly": "",
+          "monthly": "",
           "nightly" : ""
         },
         "seller_info": {
-          "name": "John Doe",
-          "email": "john@gmail.com",
-          "phone": "617-555-5555"
-        },
-        "images": [],
+          "name": "",
+          "email": "",
+          "phone": ""
+        }
     })
     const handleChange = (e) => {
         let {value, name:key} = e.target

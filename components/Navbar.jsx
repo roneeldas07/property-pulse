@@ -22,7 +22,6 @@ const Navbar = () => {
       const res = await getProviders()
       setProviders(res)
     }
-    console.log("session", session)
     getAuthProvider()
   },[])
 

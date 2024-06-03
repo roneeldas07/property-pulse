@@ -7,6 +7,7 @@ import { FaArrowLeft, FaBath, FaBed, FaBookmark, FaCheck, FaMapMarkerAlt, FaPape
 import Link from 'next/link'
 import Spinner from '@/components/Spinner'
 import PropertyImages from '@/components/PropertyImages'
+import PropertyMap from '@/components/PropertyMap'
 
 const PropertyPage = () => {
     const [property, setProperty] = useState({})
@@ -18,7 +19,7 @@ const PropertyPage = () => {
                 let fetchedProperty = await fetchProperty(id)
                 setProperty(fetchedProperty)
             } catch (error) {
-                console.log("Error in fetching record", error)
+                console.error("Error in fetching record", error)
             } finally {
                 setLoading(false)
             }
@@ -136,7 +137,7 @@ const PropertyPage = () => {
                             </ul>
                             </div>
                             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                            <div id="map"></div>
+                            <PropertyMap />
                             </div>
                         </main>
 

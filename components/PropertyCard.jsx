@@ -14,7 +14,6 @@ const PropertyCard = ({property}) => {
             return `${rates.nightly}/nt`
         }
     }
-    console.log(property.images)
     return (
         <div className="rounded-xl shadow-md relative" key={property._id}>
             <Image

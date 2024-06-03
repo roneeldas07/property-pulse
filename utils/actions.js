@@ -7,9 +7,9 @@ export const fetchProperties = async () => {
         if(!res.ok){
             throw new Error("error in fetching records")
         }
-        return res.json()
+        return await res.json()
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return []
     }
 }
@@ -24,7 +24,52 @@ export const fetchProperty = async (id) => {
         }
         return res.json()
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        return null
+    }
+}
+
+export const fetchUserProperties = async (userId) => {
+    try {
+        if(!api_domain) return null
+        if(!userId) return null
+        const res = await fetch(`${api_domain}/properties/user/${userId}`,{ method: 'GET' })
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const deleteProperty = async (propertyId) => {
+    try {
+        if(!api_domain) return null
+        if(!propertyId) return null
+        const res = await fetch(`${api_domain}/properties/${propertyId}`,{ method: 'DELETE' })
+        if(!res.ok){
+            throw new Error("error in deleting record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const updateProperty = async (propertyId, formData) => {
+    try {
+        if(!api_domain) return null
+        if(!propertyId) return null
+        const res = await fetch(`${api_domain}/properties/${propertyId}`,{ method: 'PUT', body: formData })
+        if(!res.ok){
+            throw new Error("error in updating record")
+        }
+        return res
+    } catch (error) {
+        console.error(error)
         return null
     }
 }
