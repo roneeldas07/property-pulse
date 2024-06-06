@@ -73,3 +73,64 @@ export const updateProperty = async (propertyId, formData) => {
         return null
     }
 }
+
+export const getBookmarkedData = async (propertyId) => {
+    try {
+        if(!api_domain) return null
+        if(!propertyId) return null
+        const res = await fetch(`${api_domain}/bookmark/check`,{ 
+            method: 'POST' ,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                propertyId
+            })
+        })
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const bookmarkAction = async (propertyId, isBookmarked) => {
+    try {
+        if(!api_domain) return null
+        if(!propertyId) return null
+        const res = await fetch(`${api_domain}/bookmark`,{ 
+            method: 'POST' ,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                propertyId,
+                bookmark: !isBookmarked
+            })
+        })
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const getSavedProperties = async () => {
+    try {
+        if(!api_domain) return null
+        const res = await fetch(`${api_domain}/properties/saved`,{method: 'GET'})
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
