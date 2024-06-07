@@ -14,6 +14,21 @@ export const fetchProperties = async () => {
     }
 }
 
+export const searchProperties = async (location, type) => {
+    try {
+        if(!api_domain) return []
+        const res = await fetch(`${api_domain}/properties?type=${type}&location=${location}`,{ method: 'GET' , cache: 'no-store'})
+
+        if(!res.ok){
+            throw new Error("error in fetching records")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return []
+    }
+}
+
 export const fetchProperty = async (id) => {
     try {
         if(!api_domain) return null

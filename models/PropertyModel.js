@@ -72,10 +72,6 @@ const PropertySchema = new Schema({
             type: String,
         }
     ],
-    is_featured : {
-        type: Boolean,
-        default: false
-    }
 },{
     timestamps: true,
 })
