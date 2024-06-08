@@ -1,24 +1,16 @@
 const api_domain = process.env.NEXT_PUBLIC_API_DOMAIN || null
 
-export const fetchProperties = async () => {
+export const fetchProperties = async (page, recordsPerPage, location, type) => {
     try {
         if(!api_domain) return []
-        const res = await fetch(`${api_domain}/properties`,{ method: 'GET' , cache: 'no-store'})
-        if(!res.ok){
-            throw new Error("error in fetching records")
+        let url = `${api_domain}/properties`
+        if(page && recordsPerPage){
+            url += `?page=${page}&recordsPerPage=${recordsPerPage}`
         }
-        return await res.json()
-    } catch (error) {
-        console.error(error)
-        return []
-    }
-}
-
-export const searchProperties = async (location, type) => {
-    try {
-        if(!api_domain) return []
-        const res = await fetch(`${api_domain}/properties?type=${type}&location=${location}`,{ method: 'GET' , cache: 'no-store'})
-
+        if(location) url+= `&location=${location}`
+        if(type) url+= `&type=${type}`
+        
+        const res = await fetch(url,{ method: 'GET' , cache: 'no-store'})
         if(!res.ok){
             throw new Error("error in fetching records")
         }
