@@ -15,6 +15,7 @@ const Properties = ({location, type}) => {
 
     const fetchPropertiesFn = async (location, type) => {
         try {
+            setLoading(true)
             const response = await fetchProperties(page, cardsPerPage, location, type)
             setTotalPages(Math.ceil(response.total/cardsPerPage))
             setProperties(response.properties)

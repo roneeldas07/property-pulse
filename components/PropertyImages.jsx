@@ -10,6 +10,7 @@ const PropertyImages = ({images}) => {
                 <Item
                     original={image}
                     thumbnail={image}
+                    key={index}
                     width="1024"
                     height="768"
                 >{({ ref, open }) => (

@@ -7,7 +7,6 @@ import { FaArrowLeft, FaBath, FaBed, FaCheck, FaMapMarkerAlt, FaRulerCombined, F
 import Link from 'next/link'
 import Spinner from '@/components/Spinner'
 import PropertyImages from '@/components/PropertyImages'
-import PropertyMap from '@/components/PropertyMap'
 import PropertyBookmarkButton from '@/components/PropertyBookmarkButton'
 import PropertyShareButtons from '@/components/PropertyShareButtons'
 import ContactSeller from '@/components/ContactSeller'
@@ -139,9 +138,6 @@ const PropertyPage = () => {
                                 </li>)}
                             </ul>
                             </div>
-                            {/* <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-                                <PropertyMap />
-                            </div> */}
                         </main>
 
                         {/*<!-- Sidebar -->*/}

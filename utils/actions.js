@@ -141,3 +141,97 @@ export const getSavedProperties = async () => {
         return null
     }
 }
+
+export const fetchMessages = async () => {
+    try {
+        if(!api_domain) return null
+        const res = await fetch(`${api_domain}/message`,{ method: 'GET' , cache: 'no-store'})
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const fetchUnreadMessageCount = async () => {
+    try {
+        if(!api_domain) return null
+        const res = await fetch(`${api_domain}/message/count`,{ method: 'GET' })
+        if(!res.ok){
+            throw new Error("error in fetching record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const postMessage = async (property, formData) => {
+    try {
+        if(!api_domain) return null
+        let res = await fetch(`${api_domain}/message`,{ 
+            method: 'POST',
+            body: JSON.stringify({
+                property: property._id,
+                propertyName: property.name,
+                owner: property.owner,
+                ...formData
+            })
+        })
+        if(res.status == 509){
+            res = await res.json()
+            return {error: true, message: res.message}
+        }
+        if(!res.ok){
+            throw new Error("error in posting message")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const readMessage = async (message) => {
+    try {
+        if(!api_domain) return null
+        if(!message._id) return null
+        const res = await fetch(`${api_domain}/message`,{ 
+            method: 'PUT', 
+            body: JSON.stringify({
+                ...message
+            })
+        })
+        if(!res.ok){
+            throw new Error("error in updating record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export const deleteMessage = async (message) => {
+    try {
+        if(!api_domain) return null
+        if(!message._id) return null
+        const res = await fetch(`${api_domain}/message`,{ 
+            method: 'DELETE',
+            body: JSON.stringify({
+                messageId: message._id
+            })
+        })
+        if(!res.ok){
+            throw new Error("error in deleting record")
+        }
+        return await res.json()
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
